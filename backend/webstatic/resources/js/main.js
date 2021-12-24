@@ -1,4 +1,4 @@
-var server = "http://localhost:8080/";
+var server = "http://localhost:5000/";
 
 function getCompletedTodos() {
   var result = null
@@ -10,6 +10,7 @@ function getCompletedTodos() {
       result = data;
     }
   });
+
   return result;
 }
 
@@ -23,6 +24,7 @@ function getIncompleteTodos() {
       result = data;
     }
   });
+
   return result;
 }
 
@@ -55,7 +57,8 @@ function addItem(value) {
   addItemToDOM(id, value, false);
   document.getElementById('item').value = '';
 
-  data.todo.push(value);
+  // data.todo.push(value);
+  data.todo[value] = false;
 }
 
 function addItemToBackend(value) {
@@ -69,23 +72,22 @@ function addItemToBackend(value) {
     async: false,
     success: function (data) {
       result = data;        // TODO: return last added id
-      console.log(data);
     }
   });
   return result.id;
 }
 
 function renderTodoList() {
-  if (!data.todo.length && !data.completed.length) return;
-
-  for (var i = 0; i < data.todo.length; i++) {
-    var value = data.todo[i];
-    addItemToDOM(value.id, value.title, false);
+  if (Object.keys(data.todo).length === 0 && Object.keys(data.completed).length === 0) {
+    return;
   }
 
-  for (var j = 0; j < data.completed.length; j++) {
-    var value = data.completed[j];
-    addItemToDOM(value.id, value.title, true);
+  for (const [key, value] of Object.entries(data.todo)) {
+    addItemToDOM("", key, value);
+  }
+
+  for (const [key, value] of Object.entries(data.completed)) {
+    addItemToDOM("", key, value);
   }
 }
 
@@ -97,9 +99,9 @@ function removeItem() {
   var itemID = item.id;
 
   if (typeId === 'todo') {
-    data.todo.splice(data.todo.indexOf(value), 1);
+    delete data.todo[value]
   } else {
-    data.completed.splice(data.completed.indexOf(value), 1);
+    delete data.completed[value]
   }
 
   parent.removeChild(item);
@@ -125,12 +127,12 @@ function completeItem() {
   var itemID = item.id;
 
   if (typeId === 'todo') {
-    data.todo.splice(data.todo.indexOf(value), 1);
-    data.completed.push(value);
+    delete data.todo[value]
+    data.completed[value] = true
     updateBackendItem(itemID, value, true);
   } else {
-    data.completed.splice(data.completed.indexOf(value), 1);
-    data.todo.push(value);
+    delete data.completed[value]
+    data.todo[value] = false
     updateBackendItem(itemID, value, false);
   }
 

@@ -24,8 +24,8 @@ func main() {
 	router.HandleFunc("/ping", Ping).Methods(http.MethodGet)
 
 	// add needed datastore
-	var data datastore.DataStore
-	data = datastore.NewArrayStore() // implement this
+	var data datastore.MapStore
+	data = *datastore.NewMapStore() // implement this
 
 	// get completed todo "/todo/completed"
 	router.HandleFunc("/todo/completed", data.GetCompleted).Methods(http.MethodGet)
@@ -55,8 +55,8 @@ func main() {
 	headersOk := handlers.AllowedOrigins([]string{"*"})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
 
-	log.Println("[Server] HTTP server is running at port 8080")
-	err = http.ListenAndServe(":8080", handlers.CORS(headersOk, methodsOk)(router))
+	log.Println("[Server] HTTP server is running at port 5000")
+	err = http.ListenAndServe(":5000", handlers.CORS(headersOk, methodsOk)(router))
 	if err != nil {
 		log.Fatal(err)
 	}
