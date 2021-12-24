@@ -34,9 +34,9 @@ func main() {
 	// add todo
 	router.HandleFunc("/add", data.CreateTodo).Methods(http.MethodPost)
 	// update todo status
-	router.HandleFunc("/update/{title}", data.UpdateTodo).Methods(http.MethodPut)
+	router.HandleFunc("/update/{id}", data.UpdateTodo).Methods(http.MethodPut)
 	// delete todo
-	router.HandleFunc("/delete/{title}", data.DeleteTodo).Methods(http.MethodDelete)
+	router.HandleFunc("/delete/{id}", data.DeleteTodo).Methods(http.MethodDelete)
 
 	// server static resource last
 	// this assumes main.go is called from root project,
@@ -55,8 +55,8 @@ func main() {
 	headersOk := handlers.AllowedOrigins([]string{"*"})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
 
-	log.Println("[Server] HTTP server is running at port 8080")
-	err = http.ListenAndServe(":8080", handlers.CORS(headersOk, methodsOk)(router))
+	log.Println("[Server] HTTP server is running at port 5000")
+	err = http.ListenAndServe(":5000", handlers.CORS(headersOk, methodsOk)(router))
 	if err != nil {
 		log.Fatal(err)
 	}

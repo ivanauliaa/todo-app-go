@@ -1,4 +1,4 @@
-var server = "http://localhost:8080/";
+var server = "http://localhost:5000/";
 
 function getCompletedTodos() {
   var result = null
@@ -106,9 +106,9 @@ function removeItem() {
   removeItemInBackend(itemID, value);
 }
 
-function removeItemInBackend(id, value) {
+function removeItemInBackend(id, _) {
   $.ajax({
-    url: server + "delete/" + value, // TODO: change value to id
+    url: server + "delete/" + id, // TODO: change value to id
     type: 'DELETE',
     async: false,
     success: function (data) {
@@ -141,10 +141,10 @@ function completeItem() {
   target.insertBefore(item, target.childNodes[0]);
 }
 
-function updateBackendItem(id, value, status) {
+function updateBackendItem(id, _, status) {
   payload = { 'status': status };
   $.ajax({
-    url: server + "update/" + value, // TODO: change value to id
+    url: server + "update/" + id, // TODO: change value to id
     type: 'PUT',
     data: payload,
     async: false,
