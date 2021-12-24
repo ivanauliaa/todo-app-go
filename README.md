@@ -1,3 +1,11 @@
+# Workshop HIMIT PENS X TOKOPEDIA Submission
+
+Overview:
+- main branch -> first task which store data on backend session and use map data type
+- db-base branch -> second task which store data on postgres db, use id as path params on update and delete endpoint
+
+----
+
 # todo-app-go
 
 Make sure to run `go mod vendor` first to download all needed libraries
