@@ -4,6 +4,9 @@ Overview:
 - main branch -> first task which store data on backend session and use map data type
 - db-base branch -> second task which store data on postgres db, use id as path params on update and delete endpoint
 
+Demo video:
+[Link here](https://www.youtube.com/watch?v=_Dh9xcwYgSw&list=PLOSn51yTJNvX51xIg3VQ2pruXCHQGCiMG)
+
 ----
 
 # todo-app-go
