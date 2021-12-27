@@ -5,8 +5,12 @@ Overview:
 - db-base branch -> second task which store data on postgres db, use id as path params on update and delete endpoint.
 
 ## How to Run This Project
-1. Only copy the docker-compose-prod.yaml file, and turn it up. Then you can access it by localhost:5000.
-2. Clone the project if you want to explore more.
+Follow these steps
+1. Copy the docker-compose-prod.yaml file.
+2. `docker-compose --file docker-compose-prod.yaml up --detach` or `docker-compose up --detach` (if you rename it to docker-compose.yaml).
+3. You can access it on localhost:5000.
+
+Clone the project if you want to explore more.
 
 Demo video:
 [Link here](https://www.youtube.com/watch?v=_Dh9xcwYgSw&list=PLOSn51yTJNvX51xIg3VQ2pruXCHQGCiMG)
