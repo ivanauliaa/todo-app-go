@@ -1,3 +1,18 @@
+# Workshop HIMIT PENS X TOKOPEDIA Submission
+
+Overview:
+- main branch -> first task which store data on backend session and use map data type.
+- db-base branch -> second task which store data on postgres db, use id as path params on update and delete endpoint.
+
+## How to Run This Project
+1. Only copy the docker-compose-prod.yaml file, and turn it up. Then you can access it by localhost:5000.
+2. Clone the project if you want to explore more.
+
+Demo video:
+[Link here](https://www.youtube.com/watch?v=_Dh9xcwYgSw&list=PLOSn51yTJNvX51xIg3VQ2pruXCHQGCiMG)
+
+----
+
 # todo-app-go
 
 Make sure to run `go mod vendor` first to download all needed libraries

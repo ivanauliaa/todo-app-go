@@ -3,11 +3,9 @@ version: "3"
 services:
   todo_app:
     container_name: todo-go-app
-    build: .
+    image: ivanauliaa/todo-app-go:dbstore
     ports:
       - "5000:5000"
-    volumes:
-      - ./:/app
       
   todo_app_postgres:
     container_name: todo-go-postgres
