@@ -56,7 +56,7 @@ func main() {
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
 
 	log.Println("[Server] HTTP server is running at port 5000")
-	err = http.ListenAndServe(":5000", handlers.CORS(headersOk, methodsOk)(router))
+	err = http.ListenAndServe("0.0.0.0:5000", handlers.CORS(headersOk, methodsOk)(router))
 	if err != nil {
 		log.Fatal(err)
 	}
