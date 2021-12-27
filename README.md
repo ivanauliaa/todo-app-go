@@ -4,6 +4,20 @@ Overview:
 - main branch -> first task which store data on backend session and use map data type
 - db-base branch -> second task which store data on postgres db, use id as path params on update and delete endpoint
 
+## How to Run This Project
+Choose one of these ways (clone this project first, and change directory to it)
+1. `go run backend/main.go`
+2. `go build backend && ./backend`
+3. `docker build --tag todo-app-go:mapstore . && docker run --name todo-app-go --publish 5000:5000 todo-app-go:mapstore`
+
+Then you can access it on localhost:5000.
+
+Or if you don't want to clone this project, you can follow steps below
+1. `docker pull ivanauliaa/todo-app-go:mapstore`
+2. `docker run --name todo-app-go --publish 5000:5000 ivanauliaa/todo-app-go:mapstore`
+
+Then you can access it on localhost:5000.
+
 Demo video:
 [Link here](https://www.youtube.com/watch?v=_Dh9xcwYgSw&list=PLOSn51yTJNvX51xIg3VQ2pruXCHQGCiMG)
 
